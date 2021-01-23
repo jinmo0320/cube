@@ -32,7 +32,7 @@ class App {
 
     this.ctx.scale(this.pixelRatio, this.pixelRatio);
 
-    this.cubeHeight = new CubeHeight(this.stageWidth / 2, 400, 4, 4);
+    this.cubeHeight = new CubeHeight(this.stageWidth / 2, 0, 10, 10);
     this.cubeHeight.resize();
   }
   animate() {
