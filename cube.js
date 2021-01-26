@@ -43,7 +43,7 @@ export class Cube {
     );
     if (dis < mouse.range * 2) {
       this.surfaceColor = "#0abde3";
-      this.y = this.fixedY + 20;
+      this.y = this.fixedY + 40;
     }
     this.draw(ctx);
   }

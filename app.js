@@ -10,12 +10,21 @@ let cube = {
   w: 4,
   h: 4,
 };
+let i = {
+  vertical: 0,
+  horizontal: 0,
+};
 
 const container = document.querySelector(".container");
 const inputW = document.querySelector(".input_w");
 const inputH = document.querySelector(".input_h");
 const updateBtn = document.querySelector(".btn_update");
 const hideBtn = document.querySelector(".btn_hide");
+
+const up = document.querySelector(".btn_up");
+const down = document.querySelector(".btn_down");
+const right = document.querySelector(".btn_right");
+const left = document.querySelector(".btn_left");
 
 class App {
   constructor() {
@@ -43,6 +52,23 @@ class App {
       container.style.display = "none";
     });
 
+    up.addEventListener("click", () => {
+      i.vertical -= 20;
+      this.resize();
+    });
+    down.addEventListener("click", () => {
+      i.vertical += 20;
+      this.resize();
+    });
+    right.addEventListener("click", () => {
+      i.horizontal += 20;
+      this.resize();
+    });
+    left.addEventListener("click", () => {
+      i.horizontal -= 20;
+      this.resize();
+    });
+
     window.requestAnimationFrame(this.animate.bind(this));
   }
   resize() {
@@ -54,7 +80,12 @@ class App {
 
     this.ctx.scale(this.pixelRatio, this.pixelRatio);
 
-    this.cubeHeight = new CubeHeight(this.stageWidth / 2, 400, cube.w, cube.h);
+    this.cubeHeight = new CubeHeight(
+      this.stageWidth / 2 + i.horizontal,
+      this.stageHeight / 2 + i.vertical,
+      cube.w,
+      cube.h
+    );
     this.cubeHeight.resize();
   }
   animate() {
